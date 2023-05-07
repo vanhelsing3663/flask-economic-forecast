@@ -1,21 +1,22 @@
 from flask import Flask, render_template, request, flash
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
-from validators.registration_check import CheckRegister
+from validators.registration_check import CheckUserPassword, CheckUserEmail
+
 
 app = Flask(__name__)
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:1234@localhost/economical_site'
 app.secret_key = 'mysecretkey'
-db = SQLAlchemy(app)
-valid = CheckRegister()
+validator_password = CheckUserPassword()
+validator_email = CheckUserEmail()
 
+db = SQLAlchemy(app)
 
 class Users(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(256), unique=True, nullable=False)
     password = db.Column(db.String(256), nullable=False)
-
 
 @app.route('/')
 def hello_world():  # put application's code here
@@ -30,10 +31,22 @@ def registration_handler():
     else:
         login = request.form["email"]
         password = request.form["password"]
-        if not valid.is_valid_email(login):
-            flash("Проверьте корректность email")
-        elif not valid.is_valid_password(password):
-            flash("Проверьте корректность ввода пароля")
+        if not validator_email.is_valid_lenght(login):
+            flash("Убедитесь , что вы ввели допустимую длину")
+        elif not validator_email.count_dot_email(login):
+            flash("Убедитесь , что вы в вашем email ровно одна точка")
+        elif not validator_email.email_should_not_exceed_voltage(login):
+            flash("Убедитесь , что вы ввели допустимую длину не превышающую 256 символов")
+        elif not validator_email.count_dog_symbol(login):
+            flash("Убедитесь , что в вашем email присутствует символ @")
+        elif not validator_password.is_valid_lenght(password):
+            flash("Убедитесь , что вы ввели пароль более 8 символов")
+        elif not validator_password.checking_that_the_password_contains_at_least_one_digit(password):
+            flash("Убедитесь , что в вашем пароле присутствует хотя бы одна цифра")
+        elif not validator_password.has_uppercase(password):
+            flash("Убедитесь , что в вашем пароле есть хотя бы одна заглавная буква")
+        elif not validator_password.has_special_character(password):
+            flash("Убедитесь , что в вашем пароле есть хотя бы один спец символ")
         else:
             pswd_hash = generate_password_hash(password)
             if check_password_hash(pswd_hash, password):
