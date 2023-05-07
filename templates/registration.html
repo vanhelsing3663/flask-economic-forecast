@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% for msg in get_flashed_messages() %}
+    <div class="flash">{{ msg }}</div>
+{% endfor %}
+<h1>Регистрация</h1>
+<form action="/register" method="post">
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
+    <br>
+    <label for="password">Пароль:</label>
+    <input type="password" id="password" name="password" required>
+    <input type="submit" value="Зарегистрироваться">
+</form>
+</body>
+</html>
