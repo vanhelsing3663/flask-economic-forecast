@@ -23,10 +23,6 @@ class CheckUserPassword(CheckRegister):
         pattern = r'[A-Z]'
         return bool(re.search(pattern, password))
 
-    def has_special_character(self, password):
-        """Проверяет, содержит ли пароль хотя бы один спец символ"""
-        regex = r"[ !#$%&'()*+,-./:;<=>?@[\]^_`{|}~]"
-        return bool(re.search(regex, password))
 
 
 class CheckUserEmail(CheckRegister):
@@ -37,10 +33,6 @@ class CheckUserEmail(CheckRegister):
     def count_dog_symbol(self, email):
         "Функция проверяет , что  email содержит символ @"
         return True if email.count("@") == 1 else False
-
-    def count_dot_email(self, email):
-        "Функция проверяет , что  email содержит символ . "
-        return True if email.count('.') == 1 else False
 
     def email_should_not_exceed_voltage(self, email):
         "Функция проверяет , что длина email не более 256"
