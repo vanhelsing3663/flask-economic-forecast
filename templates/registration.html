@@ -1,21 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-{% for msg in get_flashed_messages() %}
-    <div class="flash">{{ msg }}</div>
-{% endfor %}
-<h1>Регистрация</h1>
-<form action="/register" method="post">
-    <label for="email">Email:</label>
-    <input type="email" id="email" name="email" required>
-    <br>
-    <label for="password">Пароль:</label>
-    <input type="password" id="password" name="password" required>
-    <input type="submit" value="Зарегистрироваться">
-</form>
-</body>
-</html>
+{% extends "base.html" %}
+{% block title %}Регистрация{% endblock %}
+{% block main %}
+<div class="wrapper">
+        <div class="container">
+            <div class="login">
+                <div class="login__content">
+                    <div class="login__icon"><i class="fa-solid fa-user"></i></div>
+                    <div class="login__title">Регестрация</div>
+                    <form action="/register" method="post" class="login__form">
+                        <input class="login__input" placeholder="mail" type="password-mail" id="psw-mail" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" title="Должно содержать email-адрес" required>
+                        <input class="login__input" placeholder="пароль" type="password-login" id="psw-login" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Должно содержать по крайней мере одно число, одну заглавную и строчную буквы, а также не менее 8 и более символов" required>
+                        <input type="submit" class="login__button" value="Вперед!">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+

@@ -1,0 +1,41 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% block head %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+
+    <script src="https://kit.fontawesome.com/18c31b31a3.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link type="text/css" href="{{ url_for('static', filename='css/style.css')}}"  rel="stylesheet" >
+  {% endblock %}
+</head>
+<body>
+    <div class="header">
+        <div class="haeder__content">
+            <div class="header__logo">Кейсер</div>
+            <div class="header__menu menu">
+                <ul class="menu__list">
+                    <li class="menu__item _active"><a href="">загрузка</a></li>
+                    <li class="menu__item "><a href="">просмотр</a></li>
+                    <li class="menu__item "><a href="">регестрация</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    {% block main %}
+    {% endblock %}
+
+
+    <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    <script src="{{ url_for('static', filename='js/reg.js')}}"></script>
+    <script src="{{ url_for('static', filename='js/script.js')}}"></script>
+</body>
+</html>

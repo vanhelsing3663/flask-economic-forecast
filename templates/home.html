@@ -1,10 +1,78 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-<h1>Домашня страница</h1>>
-</body>
-</html>
+{% extends "base.html" %}
+{% block title %}Главная{% endblock %}
+{% block main %}
+<div class="wrapper">
+        <div class="table">
+            <div class="table__items">
+                <div class="table__item">
+                    <div class="table__name">Эконом</div>
+                    <div class="table__close"><i class="fa-solid fa-xmark"></i></div>
+                </div>
+                <div class="table__item">
+                    <div class="table__name">Эконом</div>
+                    <div class="table__close"><i class="fa-solid fa-xmark"></i></div>
+                </div>
+            </div>
+            <div class="table__add"><i class="fa-solid fa-square-plus"></i></div>
+        </div>
+        <div class="container">
+            <div class="main">
+                <div class="swiper mySwiper">
+                    <div class="swiper-wrapper">
+                      <div class="swiper-slide">
+                        <div class="wrapper-main__content">
+                            <div class="wrapper-main__title">Инструкция по использованию</div>
+                            <div class="wrapper-main__text">БлаБлаБлаБлаБла БлаБлаБлаБлаБ лаБлаБлаБлаБл БлаБлаБлаБлаБлаБлаБлаБла БлаБлаБла лаБлаБлаБлаБлаБлаБлаБлаБ лаБлаБлаБлаБлаБл аБлаБлаБл аБлаБлаБлаБлаБ лаБлаБлаБлаБлаБлаБлаБлаБлаБл аБлаБлаБлаБлаБлаБлаБлаБл аБлаБлаБлаБла лаБлаБлаБлаБлаБлаБла БлаБлаБлаБлаБлаБ лаБлаБлаБлаБлаБлаБла БлаБлаБлаБлаБла БлаБлаБлаБлаБлаБлаБл аБлаБлаБлаБлаБ лаБлаБлаБлаБлаБлаБлаБлаБла БлаБлаБлаБлаБлаБлаБлаБл аБлаБлаБлаБлаБлаБлаБл аБлаБлаБлаБлаБлаБлаБлаБла БлаБлаБлаБлаБлаБлаБлаБлаБл аБлаБлаБлаБлаБлаБлаБл аБлаБлаБлаБлаБлаБлаБлаБлаБл аБлаБлаБлаБлаБлаБ лаБлаБла БлаБлаБлаБлаБла БлаБлаБлаБлаБ лаБлаБлаБлаБл БлаБлаБлаБлаБлаБлаБлаБла БлаБлаБла лаБлаБлаБлаБлаБлаБлаБлаБ лаБлаБлаБлаБлаБл аБлаБлаБл аБлаБлаБлаБлаБ лаБлаБлаБлаБлаБлаБлаБлаБлаБл аБлаБлаБлаБлаБлаБлаБлаБл аБлаБлаБлаБла лаБлаБлаБлаБлаБлаБла БлаБлаБлаБлаБлаБ лаБлаБлаБлаБлаБлаБла БлаБлаБлаБлаБла БлаБлаБлаБлаБлаБлаБл аБлаБлаБлаБлаБ лаБлаБлаБлаБлаБлаБлаБлаБла БлаБлаБлаБлаБлаБлаБлаБл аБлаБлаБлаБлаБлаБлаБл аБлаБлаБлаБлаБлаБлаБлаБла БлаБлаБлаБлаБлаБлаБлаБлаБл аБлаБлаБлаБлаБлаБлаБл аБлаБлаБлаБлаБлаБлаБлаБлаБл аБлаБлаБлаБлаБлаБ лаБлаБла</div>
+                        </div>
+                      </div>
+                      <div class="swiper-slide">
+                        <form class="form-main" method="post" enctype="multipart/form-data">
+                            <label class="input-block">
+                                <div class="input-text">Экономика</div>
+                                <label class="input-file">
+                                    <span class="input-file-text" type="text"></span>
+                                    <input type="file" name="file">
+                                     <span class="input-file-btn">Выберите файл</span>
+                              </label>
+                            </label>
+                            <label class="input-block">
+                                <div class="input-text">Экономика</div>
+                                <label class="input-file">
+                                    <span class="input-file-text" type="text"></span>
+                                    <input type="file" name="file">
+                                     <span class="input-file-btn">Выберите файл</span>
+                              </label>
+                            </label>
+                            <label class="input-block">
+                                <div class="input-text">Экономика</div>
+                                <label class="input-file">
+                                    <span class="input-file-text" type="text"></span>
+                                    <input type="file" name="file">
+                                     <span class="input-file-btn">Выберите файл</span>
+                              </label>
+                            </label>
+                            <label class="input-block">
+                                <div class="input-text">Экономика</div>
+                                <label class="input-file">
+                                    <span class="input-file-text" type="text"></span>
+                                    <input type="file" name="file">
+                                     <span class="input-file-btn">Выберите файл</span>
+                              </label>
+                            </label>
+                            <input type="button" value="Отправить" class="main__button">
+                        </form>
+                      </div>
+                      <div class="swiper-slide">
+                        <div class="main__contact">Для связи с нами пишите на почту  mail@mail.ru </div>
+                      </div>
+
+                    </div>
+                    <div class="swiper-pagination">
+                      </div>
+                    <!-- Add Arrows -->
+                  </div>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

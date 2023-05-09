@@ -6,8 +6,12 @@ from config import DATABASE, SECRET_KEY
 
 app = Flask(__name__)
 
+
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:123090704Qq@localhost/alex_sql'
+app.secret_key = 'mysecretkey'
 app.config['SQLALCHEMY_DATABASE_URI'] = DATABASE
 app.secret_key = SECRET_KEY
+
 validator_password = CheckUserPassword()
 validator_email = CheckUserEmail()
 db = SQLAlchemy(app)
@@ -20,9 +24,16 @@ class Users(db.Model):
 
 
 @app.route('/')
-def hello_world():  # put application's code here
-    return 'Будущая домашняя страница '
+def index():
+    return render_template("index.html")
 
+@app.route('/home')
+def home():
+    return render_template("home.html")
+
+@app.route('/account')
+def account():
+    return render_template("account.html")
 
 @app.route('/register', methods=["GET", "POST"])
 def registration_handler():
@@ -34,8 +45,6 @@ def registration_handler():
         password = request.form["password"]
         if not validator_email.is_valid_lenght(login):
             flash("Убедитесь , что вы ввели допустимую длину")
-        elif not validator_email.count_dot_email(login):
-            flash("Убедитесь , что вы в вашем email ровно одна точка")
         elif not validator_email.email_should_not_exceed_voltage(login):
             flash("Убедитесь , что вы ввели допустимую длину не превышающую 256 символов")
         elif not validator_email.count_dog_symbol(login):
@@ -46,8 +55,6 @@ def registration_handler():
             flash("Убедитесь , что в вашем пароле присутствует хотя бы одна цифра")
         elif not validator_password.has_uppercase(password):
             flash("Убедитесь , что в вашем пароле есть хотя бы одна заглавная буква")
-        elif not validator_password.has_special_character(password):
-            flash("Убедитесь , что в вашем пароле есть хотя бы один спец символ")
         else:
             pswd_hash = generate_password_hash(password)
             if check_password_hash(pswd_hash, password):
